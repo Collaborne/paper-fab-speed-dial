@@ -1,0 +1,69 @@
+<link rel="import" href="../polymer/polymer.html">
+<link rel="import" href="../iron-icons/iron-icons.html">
+<link rel="import" href="../paper-fab/paper-fab.html">
+<link rel="import" href="paper-fab-speed-dial-overlay.html">
+
+<dom-module id='paper-fab-speed-dial'>
+
+	<template>
+
+		<style>
+			.open {
+				--paper-fab-background: var(--paper-fab-speed-dial-background);
+				--paper-fab-keyboard-focus-background: var(--paper-fab-speed-dial-focus-background);
+				position: absolute;
+				bottom: 20px;
+				right: 20px;
+			}
+
+			.close {
+				--paper-fab-background: var(--paper-grey-500);
+				--paper-fab-keyboard-focus-background: var(--paper-grey-500);
+				margin-top: 20px;
+				display: inline-block;
+			}
+			
+			#overlay {
+				right: 20px;
+				bottom: 20px;
+				position: fixed;
+				text-align: right;
+				--iron-overlay-backdrop-opacity: var(--paper-fab-speed-dial-overlay-backdrop-opacity);
+			}
+		</style>
+
+		<paper-fab icon='add' class='open' on-tap='_open' hidden=[[opened]]></paper-fab>
+		
+		<paper-fab-speed-dial-overlay id='overlay' opened={{opened}} with-backdrop no-cancel-on-outside-click>
+			<content></content>
+			<paper-fab icon='close' class='close' on-tap='_close'></paper-fab>
+		</paper-fab-speed-dial-overlay>
+
+	</template>
+</dom-module>
+
+<script>
+
+(function() {
+
+	Polymer({
+		is: 'paper-fab-speed-dial',
+		properties: {
+			opened: {
+				type: Boolean,
+				notify: true
+			}
+		},
+
+		// Private methods
+		_open: function(e) {
+			this.opened = true;
+		},
+		_close: function(e) {
+			this.opened = false;
+		}
+	});
+
+})();
+
+</script>

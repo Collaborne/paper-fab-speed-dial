@@ -1,0 +1,46 @@
+<link rel="import" href="../polymer/polymer.html">
+<link rel="import" href="../paper-fab/paper-fab.html">
+
+<dom-module id='paper-fab-speed-dial-action'>
+
+	<template>
+
+		<style>
+			:host {
+				@apply(--layout-horizontal);
+				@apply(--layout-center);
+				margin-top: 15px;
+				margin-right: 8px;
+				display: block;
+			}
+			
+			.label {
+				color: black;
+				background: white;
+				padding: 5px 10px;
+				border-radius: 3px;
+				margin-right: 20px;
+				text-align: right;
+			}
+		</style>
+
+		<div class='flex label'><content></content></div>
+		<paper-fab icon=[[icon]] mini></paper-fab>
+
+	</template>
+</dom-module>
+
+<script>
+
+(function() {
+
+	Polymer({
+		is: 'paper-fab-speed-dial-action',
+		properties: {
+			icon: String
+		}
+	});
+
+})();
+
+</script>
