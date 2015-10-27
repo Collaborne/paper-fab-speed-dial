@@ -22,10 +22,15 @@
 				margin-right: 20px;
 				text-align: right;
 			}
+			
+			.fab {
+				--paper-fab-background: var(--paper-fab-speed-dial-action-background);
+				--paper-fab-keyboard-focus-background: var(--paper-fab-speed-dial-action-keyboard-focus-background);
+			}
 		</style>
 
-		<div class='flex label'><content></content></div>
-		<paper-fab icon=[[icon]] mini></paper-fab>
+		<div class='flex'><span class='label'><content></content></span></div>
+		<paper-fab class='fab' icon=[[icon]] mini></paper-fab>
 
 	</template>
 </dom-module>
