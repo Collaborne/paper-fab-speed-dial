@@ -1,4 +1,4 @@
-paper-fab-speed-dial [![Bower version](https://badge.fury.io/bo/paper-fab-speed-dial.svg)](http://badge.fury.io/bo/paper-fab-speed-dial)
+paper-fab-speed-dial [![Bower version](https://badge.fury.io/bo/paper-fab-speed-dial.svg)](http://badge.fury.io/bo/paper-fab-speed-dial) [![Travis state](https://travis-ci.org/Collaborne/paper-fab-speed-dial.svg?branch=master)](https://travis-ci.org/Collaborne/paper-fab-speed-dial)
 =========
 
 `paper-fab-speed-dial` provides components to build a material design [Floating Action Button with Speed Dial](https://www.google.com/design/spec/components/buttons-floating-action-button.html#buttons-floating-action-button-transitions). The web component is built with [Polymer 1.x](https://www.polymer-project.org).
@@ -37,11 +37,6 @@ Style                                                   | Description
 ------------------------------------------------------- | ------------
 --paper-fab-speed-dial-action-background                | The background color of the Floating Action Button
 --paper-fab-speed-dial-action-keyboard-focus-background | The background color of the Floating Action Button when focused
-
-
-## Continuous integration
-
-[Travis-CI](https://travis-ci.org/Collaborne/paper-fab-speed-dial) [![Travis state](https://travis-ci.org/Collaborne/paper-fab-speed-dial.svg?branch=master)](https://travis-ci.org/Collaborne/paper-fab-speed-dial)
 
 
 ## License
