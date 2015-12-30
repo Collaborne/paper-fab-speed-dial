@@ -1,6 +1,24 @@
 <link rel="import" href="../polymer/polymer.html">
 <link rel="import" href="../paper-fab/paper-fab.html">
 
+<!--
+An action within a material design [Floating Action Button with Speed Dial](https://www.google.com/design/spec/components/buttons-floating-action-button.html#buttons-floating-action-button-transitions)
+
+### Styling
+
+Style                                                   | Description
+------------------------------------------------------- | ------------
+--paper-fab-speed-dial-action-background                | The background color of the Floating Action Button
+--paper-fab-speed-dial-action-keyboard-focus-background | The background color of the Floating Action Button when focused
+
+### Example
+
+```html
+<paper-fab-speed-dial-action icon="icons:content-copy">Copy</paper-fab-speed-dial-action>
+```
+
+@demo demo/index.html
+-->
 <dom-module id='paper-fab-speed-dial-action'>
 
 	<template>
@@ -42,6 +60,9 @@
 	Polymer({
 		is: 'paper-fab-speed-dial-action',
 		properties: {
+			/**
+			 * Icon that is shown next to the content
+			 */
 			icon: String
 		}
 	});
