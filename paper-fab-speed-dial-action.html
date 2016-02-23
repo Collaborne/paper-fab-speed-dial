@@ -28,6 +28,7 @@ Style                                                   | Description
 			:host {
 				@apply(--layout-horizontal);
 				@apply(--layout-center);
+				@apply(--layout-end-justified);
 				margin-top: 15px;
 				margin-right: 8px;
 				display: block;
@@ -41,12 +42,15 @@ Style                                                   | Description
 				padding: 5px 10px;
 				border-radius: 3px;
 				margin-right: 20px;
-				text-align: right;
 			}
 
 			.fab {
 				--paper-fab-background: var(--paper-fab-speed-dial-action-background);
 				--paper-fab-keyboard-focus-background: var(--paper-fab-speed-dial-action-keyboard-focus-background);
+			}
+
+			.label,.fab {
+				display: inline-block;
 			}
 		</style>
 

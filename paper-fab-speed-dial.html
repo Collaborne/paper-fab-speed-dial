@@ -29,12 +29,15 @@ Style                                            | Description
 	<template>
 
 		<style>
+			.open,.overlay {
+				position: fixed;
+				bottom: 16px;
+				right: 16px;
+			}
+
 			.open {
 				--paper-fab-background: var(--paper-fab-speed-dial-background);
 				--paper-fab-keyboard-focus-background: var(--paper-fab-speed-dial-keyboard-focus-background);
-				position: absolute;
-				bottom: 16px;
-				right: 16px;
 			}
 
 			.close {
@@ -43,17 +46,14 @@ Style                                            | Description
 				margin-top: 20px;
 				display: inline-block;
 			}
-			
+
 			.overlay {
-				right: 16px;
-				bottom: 16px;
-				position: fixed;
 				text-align: right;
 			}
 		</style>
 
 		<paper-fab icon="add" class="open" on-tap="open" hidden$="[[opened]]"></paper-fab>
-		
+
 		<paper-fab-speed-dial-overlay class="overlay" opened="{{opened}}" with-backdrop no-cancel-on-outside-click>
 			<content></content>
 			<paper-fab icon="close" class="close" on-tap="close"></paper-fab>
