@@ -83,8 +83,7 @@ Style                                            | Description
 			this.opened = true;
 		},
 		close: function(e) {
-			// Required for mobile Safari to avoid passing the tap e
-vent to an element below the FAB
+			// Required for mobile Safari to avoid passing the tap event to an element below the FAB
 			e.preventDefault();
 
 			this.opened = false;
