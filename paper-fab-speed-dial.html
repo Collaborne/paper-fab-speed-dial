@@ -78,13 +78,17 @@ Style                                            | Description
 		// Public methods
 		open: function(e) {
 			// Required for mobile Safari to avoid passing the tap event to an element below the FAB
-			e.preventDefault();
+			if (e) {
+				e.preventDefault();
+			}
 
 			this.opened = true;
 		},
 		close: function(e) {
 			// Required for mobile Safari to avoid passing the tap event to an element below the FAB
-			e.preventDefault();
+			if (e) {
+				e.preventDefault();
+			}
 
 			this.opened = false;
 		}
