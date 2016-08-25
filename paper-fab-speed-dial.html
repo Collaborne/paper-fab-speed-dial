@@ -56,7 +56,7 @@ Style                                            | Description
 
 		<paper-fab icon="add" class="open" on-tap="open" hidden$="[[opened]]"></paper-fab>
 
-		<paper-fab-speed-dial-overlay class="overlay" opened="{{opened}}" with-backdrop>
+		<paper-fab-speed-dial-overlay class="overlay" opened="{{opened}}" with-backdrop="[[withBackdrop]]">
 			<content></content>
 			<paper-fab icon="close" class="close" on-tap="close"></paper-fab>
 		</paper-fab-speed-dial-overlay>
@@ -66,36 +66,60 @@ Style                                            | Description
 
 <script>
 
-(function() {
+	(function() {
 
-	Polymer({
-		is: 'paper-fab-speed-dial',
-		properties: {
-			opened: {
-				type: Boolean,
-				notify: true
+		Polymer({
+			is: 'paper-fab-speed-dial',
+			properties: {
+				opened: {
+					type: Boolean,
+					notify: true
+				},
+				withBackdrop: {
+					/**
+					 * Customize the backdrop visibility
+					 */
+					type: Boolean,
+					notify: true,
+					value: true
+				}
+			},
+			observers: [
+				'_withBackdropChanged(withBackdrop)'
+			],
+
+			// Public methods
+			open: function(e) {
+				// Required for mobile Safari to avoid passing the tap event to an element below the FAB
+				if (e) {
+					e.preventDefault();
+				}
+
+				this.opened = true;
+			},
+			close: function(e) {
+				// Required for mobile Safari to avoid passing the tap event to an element below the FAB
+				if (e) {
+					e.preventDefault();
+				}
+
+				this.opened = false;
+			},
+			_withBackdropChanged: function(withBackdrop) {
+				if(withBackdrop){
+					/**
+					 * Due to incompatibility with the backdrop showing on top of the overlay
+					 * in iOS devices, override the value of withBackdrop property to hide it.
+					 */
+					var userAgent = window.navigator.userAgent;
+					if (userAgent.match(/iPad/i) || userAgent.match(/iPhone/i)) {
+						// iPad or iPhone
+						this.withBackdrop = false;
+					}
+				}
 			}
-		},
+		});
 
-		// Public methods
-		open: function(e) {
-			// Required for mobile Safari to avoid passing the tap event to an element below the FAB
-			if (e) {
-				e.preventDefault();
-			}
-
-			this.opened = true;
-		},
-		close: function(e) {
-			// Required for mobile Safari to avoid passing the tap event to an element below the FAB
-			if (e) {
-				e.preventDefault();
-			}
-
-			this.opened = false;
-		}
-	});
-
-})();
+	})();
 
 </script>
