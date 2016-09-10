@@ -54,7 +54,7 @@ Style                                            | Description
 			}
 		</style>
 
-		<paper-fab icon="add" class="open" on-tap="open" hidden$="[[opened]]"></paper-fab>
+		<paper-fab icon="[[icon]]" class="open" on-tap="open" hidden$="[[opened]]"></paper-fab>
 
 		<paper-fab-speed-dial-overlay class="overlay" opened="{{opened}}" with-backdrop="[[withBackdrop]]">
 			<content></content>
@@ -71,6 +71,10 @@ Style                                            | Description
 	Polymer({
 		is: 'paper-fab-speed-dial',
 		properties: {
+			icon: {
+				type: String,
+				value: 'add'
+			},
 			opened: {
 				type: Boolean,
 				notify: true
