@@ -56,7 +56,7 @@ Style                                            | Description
 
 		<paper-fab icon="[[icon]]" class="open" on-tap="open" hidden$="[[opened]]"></paper-fab>
 
-		<paper-fab-speed-dial-overlay class="overlay" opened="{{opened}}" with-backdrop="[[withBackdrop]]">
+		<paper-fab-speed-dial-overlay class="overlay" opened="{{opened}}" with-backdrop>
 			<content></content>
 			<paper-fab icon="close" class="close" on-tap="close"></paper-fab>
 		</paper-fab-speed-dial-overlay>
@@ -79,18 +79,7 @@ Style                                            | Description
 				type: Boolean,
 				notify: true
 			},
-			withBackdrop: {
-				/**
-				 * Customize the backdrop visibility
-				 */
-				type: Boolean,
-				notify: true,
-				value: true
-			}
 		},
-		observers: [
-			'_withBackdropChanged(withBackdrop)'
-		],
 
 		// Public methods
 		open: function(e) {
@@ -109,19 +98,6 @@ Style                                            | Description
 
 			this.opened = false;
 		},
-		_withBackdropChanged: function(withBackdrop) {
-			if (withBackdrop) {
-				/**
-				 * Due to incompatibility with the backdrop showing on top of the overlay
-				 * in iOS devices, override the value of withBackdrop property to hide it.
-				 */
-				var userAgent = window.navigator.userAgent;
-				if (userAgent.match(/iPad/i) || userAgent.match(/iPhone/i)) {
-					// iPad or iPhone
-					this.withBackdrop = false;
-				}
-			}
-		}
 	});
 
 })();
