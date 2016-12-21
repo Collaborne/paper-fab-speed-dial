@@ -56,7 +56,7 @@ Style                                            | Description
 
 		<paper-fab icon="[[icon]]" class="open" on-tap="open" hidden$="[[opened]]" disabled="[[disabled]]"></paper-fab>
 
-		<paper-fab-speed-dial-overlay class="overlay" opened="{{opened}}" with-backdrop>
+		<paper-fab-speed-dial-overlay class="overlay" opened="{{opened}}" with-backdrop$="[[withBackdrop]]">
 			<content></content>
 			<paper-fab icon="close" class="close" on-tap="close"></paper-fab>
 		</paper-fab-speed-dial-overlay>
@@ -82,7 +82,11 @@ Style                                            | Description
 			disabled: {
 				type: Boolean,
 				value: false
-			}
+			},
+            withBackdrop:{
+                type: Boolean,
+                value: false
+            }
 		},
 
 		// Public methods
