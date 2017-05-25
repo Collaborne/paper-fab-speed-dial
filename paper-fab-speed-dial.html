@@ -19,8 +19,8 @@ Style                                            | Description
 
 ```html
 <paper-fab-speed-dial>
-  <paper-fab-speed-dial-action icon="icons:content-copy">Copy</paper-fab-speed-dial-action>
-  <paper-fab-speed-dial-action icon="icons:print">Print</paper-fab-speed-dial-action>
+<paper-fab-speed-dial-action icon="icons:content-copy">Copy</paper-fab-speed-dial-action>
+<paper-fab-speed-dial-action icon="icons:print">Print</paper-fab-speed-dial-action>
 </paper-fab-speed-dial>
 ```
 
@@ -28,36 +28,36 @@ Style                                            | Description
 -->
 <dom-module id="paper-fab-speed-dial">
 
-	<template>
+<template>
 
-		<style>
-			.open,.overlay {
-				position: fixed;
-				bottom: var(--paper-fab-speed-dial-bottom, 16px);
-				right: var(--paper-fab-speed-dial-right, 16px);
-			}
+	<style>
+		.open,.overlay {
+			position: fixed;
+			bottom: var(--paper-fab-speed-dial-bottom, 16px);
+			right: var(--paper-fab-speed-dial-right, 16px);
+		}
 
-			.open {
-				--paper-fab-background: var(--paper-fab-speed-dial-background);
-				--paper-fab-keyboard-focus-background: var(--paper-fab-speed-dial-keyboard-focus-background);
-			}
+		.open {
+			--paper-fab-background: var(--paper-fab-speed-dial-background);
+			--paper-fab-keyboard-focus-background: var(--paper-fab-speed-dial-keyboard-focus-background);
+		}
 
-			.close {
-				--paper-fab-background: var(--paper-grey-500);
-				--paper-fab-keyboard-focus-background: var(--paper-grey-500);
-				margin-top: 20px;
-				display: inline-block;
-			}
+		.close {
+			--paper-fab-background: var(--paper-grey-500);
+			--paper-fab-keyboard-focus-background: var(--paper-grey-500);
+			margin-top: 20px;
+			display: inline-block;
+		}
 
-			.overlay {
-				text-align: right;
-			}
-		</style>
+		.overlay {
+			text-align: right;
+		}
+	</style>
 
-		<paper-fab icon="[[icon]]" class="open" on-tap="open" hidden$="[[opened]]" disabled="[[disabled]]"></paper-fab>
+	<paper-fab icon="[[icon]]" class="open" on-tap="open" hidden$="[[opened]]" disabled="[[disabled]]"></paper-fab>
 
-		<paper-fab-speed-dial-overlay class="overlay" opened="{{opened}}" with-backdrop>
-			<content></content>
+	<paper-fab-speed-dial-overlay class="overlay" opened="{{opened}}" with-backdrop>
+			<slot></slot>
 			<paper-fab icon="close" class="close" on-tap="close"></paper-fab>
 		</paper-fab-speed-dial-overlay>
 
