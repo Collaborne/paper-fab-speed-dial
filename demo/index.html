@@ -1,6 +1,6 @@
 <html>
 	<head>
-	    <script src="../../webcomponentsjs/webcomponents-lite.js"></script>
+		<script src="../../webcomponentsjs/webcomponents-lite.js"></script>
 		<link rel="import" href="../../paper-styles/demo-pages.html">
 		<link rel="import" href="../../paper-checkbox/paper-checkbox.html">
 		<link rel="import" href="../../iron-demo-helpers/demo-snippet.html">
@@ -10,15 +10,17 @@
 	</head>
 
 	<body>
-		<template is="dom-bind">
-			<paper-fab-speed-dial disabled="[[disabled]]">
-				<paper-fab-speed-dial-action icon="icons:content-copy">Copy</paper-fab-speed-dial-action>
-				<paper-fab-speed-dial-action icon="icons:print">Print</paper-fab-speed-dial-action>
-			</paper-fab-speed-dial>
+		<dom-bind>
+			<template>
+				<paper-fab-speed-dial disabled="[[disabled]]">
+					<paper-fab-speed-dial-action icon="icons:content-copy">Copy</paper-fab-speed-dial-action>
+					<paper-fab-speed-dial-action icon="icons:print">Print</paper-fab-speed-dial-action>
+				</paper-fab-speed-dial>
 
-			<div class="horizontal-section">
-				<paper-checkbox checked="{{disabled}}">Disabled</paper-checkbox>
-			</div>
-		</template>
+				<div class="horizontal-section">
+					<paper-checkbox checked="{{disabled}}">Disabled</paper-checkbox>
+				</div>
+			</template>
+		</dom-bind>
 	</body>
 </html>
