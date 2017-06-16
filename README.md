@@ -17,6 +17,13 @@ To use this element:
     <link rel="import" href="../iron-icons/iron-icons.html">
     <link rel="import" href="paper-fab-speed-dial.html">
     <link rel="import" href="paper-fab-speed-dial-action.html">
+    <custom-style>
+    <style is="custom-style">
+      body {
+        min-height: 300px;
+      }
+    </style>
+    <custom-style>
     <next-code-block></next-code-block>
   </template>
 </custom-element-demo>
