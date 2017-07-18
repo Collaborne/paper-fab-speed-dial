@@ -9,6 +9,8 @@ An action within a material design [Floating Action Button with Speed Dial](http
 
 Style                                                   | Description
 ------------------------------------------------------- | ------------
+--paper-fab-speed-dial-action-label-color               | The text color of label
+--paper-fab-speed-dial-action-label-background          | The background color of label
 --paper-fab-speed-dial-action-background                | The background color of the Floating Action Button
 --paper-fab-speed-dial-action-keyboard-focus-background | The background color of the Floating Action Button when focused
 
@@ -36,8 +38,8 @@ Style                                                   | Description
 			}
 
 			.label {
-				color: black;
-				background: white;
+				color: var(--paper-fab-speed-dial-action-label-color, black);
+				background: var(--paper-fab-speed-dial-action-label-background, white);
 				padding: 5px 10px;
 				border-radius: 3px;
 				margin-right: 20px;
