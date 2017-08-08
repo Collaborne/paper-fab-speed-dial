@@ -40,13 +40,15 @@ Style                                            | Description
 			.open {
 				--paper-fab-background: var(--paper-fab-speed-dial-background);
 				--paper-fab-keyboard-focus-background: var(--paper-fab-speed-dial-keyboard-focus-background);
+				@apply --paper-fab-speed-dial-open;
 			}
 
 			.close {
-				--paper-fab-background: var(--paper-grey-500);
-				--paper-fab-keyboard-focus-background: var(--paper-grey-500);
+				--paper-fab-background: var(--paper-fab-speed-dial-background, --paper-grey-500);
+				--paper-fab-keyboard-focus-background: var(--paper-fab-speed-dial-keyboard-focus-background, --paper-grey-500);
 				margin-top: 20px;
 				display: inline-block;
+				@apply --paper-fab-speed-dial-close;
 			}
 
 			.overlay {
@@ -54,7 +56,7 @@ Style                                            | Description
 			}
 		</style>
 
-		<paper-fab icon="[[icon]]" class="open" on-tap="open" hidden$="[[opened]]" disabled="[[disabled]]"></paper-fab>
+		<paper-fab icon$="[[computedIcon]]" src$="[[src]]" class="open" on-tap="open" hidden$="[[opened]]" disabled="[[disabled]]"></paper-fab>
 
 		<paper-fab-speed-dial-overlay id="overlay" class="overlay" opened="{{opened}}" with-backdrop="[[withBackdrop]]">
 			<slot></slot>
@@ -72,8 +74,14 @@ Style                                            | Description
 		is: 'paper-fab-speed-dial',
 		properties: {
 			icon: {
+				type: String,	
+			},
+			computedIcon: {
 				type: String,
-				value: 'add'
+				computed: '_computeIcon(icon, src)'
+			},
+			src: {
+				type: String
 			},
 			opened: {
 				type: Boolean,
@@ -102,6 +110,12 @@ Style                                            | Description
 			}
 
 			this.opened = false;
+		},
+		
+		// Protected methods
+		_computeIcon: function(icon, src) {
+			// If we don't have an icon and we don't have a src then we default to the 'add' icon
+			return ((icon === undefined || icon === '') && (src === undefined || src === '')) ? 'add' : undefined;
 		},
 	});
 
