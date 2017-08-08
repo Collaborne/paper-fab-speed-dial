@@ -56,7 +56,7 @@ Style                                                   | Description
 		</style>
 
 		<div class="flex"><span class="label"><slot></slot></span></div>
-		<paper-fab class="fab" icon=[[icon]] mini></paper-fab>
+		<paper-fab class="fab" icon$="[[icon]]" src$="[[src]]" mini></paper-fab>
 
 	</template>
 </dom-module>
@@ -71,7 +71,12 @@ Style                                                   | Description
 			/**
 			 * Icon that is shown next to the content
 			 */
-			icon: String
+			icon: String,
+			
+			/**
+			 * Custom icon using the paper-fab 'src' property
+			 */
+			src: String,
 		}
 	});
 
