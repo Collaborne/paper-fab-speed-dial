@@ -8,14 +8,12 @@ A material design [Floating Action Button with Speed Dial](https://www.google.co
 
 ### Styling
 
-Style                                                   | Description
-------------------------------------------------        | ------------
---paper-fab-speed-dial-background                       | The background color of the Floating Action Button
---paper-fab-speed-dial-keyboard-focus-background        | The background color of the Floating Action Button when focused
---paper-fab-speed-dial-background-close                 | The background color of the Floating Action Button when opened
---paper-fab-speed-dial-keyboard-focus-background-close  | The background color of the Floating Action Button when opened and focused
---paper-fab-speed-dial-right                            | Margin to the right of the screen (default: 16px)
---paper-fab-speed-dial-bottom                           | Margin to the bottom of the screen (default: 16px)
+Style                                            | Description
+------------------------------------------------ | ------------
+--paper-fab-speed-dial-background                | The background color of the Floating Action Button
+--paper-fab-speed-dial-keyboard-focus-background | The background color of the Floating Action Button when focused
+--paper-fab-speed-dial-side                      | Margin to the side of the screen (default: 16px)
+--paper-fab-speed-dial-top-bottom                 | Margin to the top or bottom of the screen (default: 16px)
 
 ### Example
 
@@ -35,9 +33,24 @@ Style                                                   | Description
 		<style>
 			.open,.overlay {
 				position: fixed;
-				bottom: var(--paper-fab-speed-dial-bottom, 16px);
-				right: var(--paper-fab-speed-dial-right, 16px);
 			}
+
+      .bottomlayout {
+				bottom: var(--paper-fab-speed-dial-top-bottom, 16px);
+      }
+
+      .toplayout {
+				top: var(--paper-fab-speed-dial-top-bottom, 16px);
+      }
+      .rightlayout {
+				text-align: right;
+				right: var(--paper-fab-speed-dial-side, 16px); 
+      }
+
+      .leftlayout {
+				text-align: left;
+				left: var(--paper-fab-speed-dial-side, 16px); 
+      }
 
 			.open {
 				--paper-fab-background: var(--paper-fab-speed-dial-background);
@@ -45,18 +58,17 @@ Style                                                   | Description
 			}
 
 			.close {
-				--paper-fab-background: var(--paper-fab-speed-dial-background-close, var(--paper-grey-500));
-				--paper-fab-keyboard-focus-background: var(--paper-fab-speed-dial-keyboard-focus-background-close, var(--paper-grey-500));
+				--paper-fab-background: var(--paper-grey-500);
+				--paper-fab-keyboard-focus-background: var(--paper-grey-500);
 				margin-top: 20px;
 				display: inline-block;
 			}
 
 			.overlay {
-				text-align: right;
 			}
 		</style>
 
-		<paper-fab icon="[[icon]]" class="open" on-tap="open" hidden$="[[opened]]" disabled="[[disabled]]"></paper-fab>
+		<paper-fab icon="[[icon]]" id="mainfab" class="open" on-tap="open" hidden$="[[opened]]" disabled="[[disabled]]"></paper-fab>
 
 		<paper-fab-speed-dial-overlay id="overlay" class="overlay" opened="{{opened}}" with-backdrop="[[withBackdrop]]">
 			<slot></slot>
@@ -86,6 +98,16 @@ Style                                                   | Description
 				value: false
 			},
 			withBackdrop: Boolean,
+      horizontalAlign: {
+        type: String,
+        value: 'right',
+        observer: '_setHoriz'
+      },
+      verticleAlign: {
+        type: String,
+        value: 'bottom',
+        observer: '_setVert'
+      }
 		},
 
 		// Public methods
@@ -105,7 +127,31 @@ Style                                                   | Description
 
 			this.opened = false;
 		},
+
+    // Private methods
+    _setHoriz(newValue, oldValue) {
+      if (newValue === 'right') {
+        this.$.mainfab.className += ' rightlayout';
+        this.$.overlay.className += ' rightlayout';
+      } else if(newValue === 'left') {
+        this.$.mainfab.className += ' leftlayout';
+        this.$.overlay.className += ' leftlayout';
+      }
+    },
+
+    _setVert(newValue, oldValue) {
+      if (newValue === 'bottom') {
+        this.$.mainfab.className += ' bottomlayout';
+        this.$.overlay.className += ' bottomlayout';
+      } else if (newValue === 'top') {
+        this.$.mainfab.classname += ' toplayout';
+        this.$.overlay.classname += ' toplayout';
+      }
+
+    },
 	});
+
+
 
 })();
 
