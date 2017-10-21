@@ -30,8 +30,11 @@ Style                                                   | Description
 			:host {
 				@apply --layout-horizontal;
 				@apply --layout-center;
-				/* @apply --layout-end-justified; */
+				/* TODO: find a way to only end justify when !textright
+           @apply --layout-end-justified;
+        */
 				margin-top: 15px;
+				margin-right: 8px;
 				margin-left: 8px;
 				/** For IE11: otherwise the label overlays the FAB */
 				min-width: 270px;
@@ -42,6 +45,7 @@ Style                                                   | Description
 				background: var(--paper-fab-speed-dial-action-label-background, white);
 				padding: 5px 10px;
 				border-radius: 3px;
+				margin-right: 20px;
 				margin-left: 20px;
 			}
 
