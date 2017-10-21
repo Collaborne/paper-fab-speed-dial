@@ -8,12 +8,14 @@ A material design [Floating Action Button with Speed Dial](https://www.google.co
 
 ### Styling
 
-Style                                            | Description
------------------------------------------------- | ------------
---paper-fab-speed-dial-background                | The background color of the Floating Action Button
---paper-fab-speed-dial-keyboard-focus-background | The background color of the Floating Action Button when focused
---paper-fab-speed-dial-side                      | Margin to the side of the screen (default: 16px)
---paper-fab-speed-dial-top-bottom                 | Margin to the top or bottom of the screen (default: 16px)
+Style                                                   | Description
+------------------------------------------------------- | ------------
+--paper-fab-speed-dial-background                       | The background color of the Floating Action Button
+--paper-fab-speed-dial-keyboard-focus-background        | The background color of the Floating Action Button when focused
+--paper-fab-speed-dial-background-close                 | The background color of the Floating Action Button when opened
+--paper-fab-speed-dial-keyboard-focus-background-close  | The background color of the Floating Action Button when opened and focused
+--paper-fab-speed-dial-side                             | Margin to the side of the screen (default: 16px)
+--paper-fab-speed-dial-top-bottom                       | Margin to the top or bottom of the screen (default: 16px)
 
 ### Example
 
@@ -58,8 +60,8 @@ Style                                            | Description
 			}
 
 			.close {
-				--paper-fab-background: var(--paper-grey-500);
-				--paper-fab-keyboard-focus-background: var(--paper-grey-500);
+				--paper-fab-background: var(--paper-fab-speed-dial-background-close, var(--paper-grey-500));
+				--paper-fab-keyboard-focus-background: var(--paper-fab-speed-dial-keyboard-focus-background-close, var(--paper-grey-500));
 				margin-top: 20px;
 				display: inline-block;
 			}
