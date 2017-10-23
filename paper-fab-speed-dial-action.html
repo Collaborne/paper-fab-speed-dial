@@ -30,9 +30,6 @@ Style                                                   | Description
 			:host {
 				@apply --layout-horizontal;
 				@apply --layout-center;
-				/* TODO: find a way to only end justify when !textright
-           @apply --layout-end-justified;
-        */
 				margin-top: 15px;
 				margin-right: 8px;
 				margin-left: 8px;
@@ -40,7 +37,13 @@ Style                                                   | Description
 				min-width: 270px;
 			}
 
-			.label {
+      :host {
+        -ms-flex-pack: var(--internal-style-justify, end);
+        -webkit-justify-content: --internal-style-justify;
+        justify-content: var(--internal-style-justify-flex, flex-end);
+      }
+
+  		.label {
 				color: var(--paper-fab-speed-dial-action-label-color, black);
 				background: var(--paper-fab-speed-dial-action-label-background, white);
 				padding: 5px 10px;
@@ -86,9 +89,19 @@ Style                                                   | Description
 			 */
       textright: {
         type: Boolean,
-        value: false 
+        value: false,
+        observer: '_setTextRight'
       }
-		}
+		},
+
+    //Private Methods
+    _setTextRight(newVal, oldVal) {
+      if (newVal == true) {
+        this.updateStyles({'--internal-style-justify': 'start'});
+        this.updateStyles({'--internal-style-justify-flex': 'flex-start'});
+      }
+    }
+
 	});
 
 })();
