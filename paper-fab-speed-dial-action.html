@@ -30,19 +30,26 @@ Style                                                   | Description
 			:host {
 				@apply --layout-horizontal;
 				@apply --layout-center;
-				@apply --layout-end-justified;
 				margin-top: 15px;
 				margin-right: 8px;
+				margin-left: 8px;
 				/** For IE11: otherwise the label overlays the FAB */
 				min-width: 270px;
 			}
 
-			.label {
+      :host {
+        -ms-flex-pack: var(--internal-style-justify, end);
+        -webkit-justify-content: --internal-style-justify;
+        justify-content: var(--internal-style-justify-flex, flex-end);
+      }
+
+  		.label {
 				color: var(--paper-fab-speed-dial-action-label-color, black);
 				background: var(--paper-fab-speed-dial-action-label-background, white);
 				padding: 5px 10px;
 				border-radius: 3px;
 				margin-right: 20px;
+				margin-left: 20px;
 			}
 
 			.fab {
@@ -55,9 +62,14 @@ Style                                                   | Description
 			}
 		</style>
 
-		<div class="flex"><span class="label"><slot></slot></span></div>
-		<paper-fab class="fab" icon=[[icon]] mini></paper-fab>
-
+    <template is="dom-if" if="{{!textright}}">
+      <div class="flex"><span class="label"><slot></slot></span></div>
+      <paper-fab class="fab" icon=[[icon]] mini></paper-fab>
+    </template>
+    <template is="dom-if" if="{{textright}}">
+      <paper-fab class="fab" icon=[[icon]] mini></paper-fab>
+      <div class="flex"><span class="label"><slot></slot></span></div>
+    </template>
 	</template>
 </dom-module>
 
@@ -71,8 +83,25 @@ Style                                                   | Description
 			/**
 			 * Icon that is shown next to the content
 			 */
-			icon: String
-		}
+			icon: String,
+			/**
+			 * Boolean property, if true the text is displayed to the right of the icon 
+			 */
+      textright: {
+        type: Boolean,
+        value: false,
+        observer: '_setTextRight'
+      }
+		},
+
+    //Private Methods
+    _setTextRight(newVal, oldVal) {
+      if (newVal == true) {
+        this.updateStyles({'--internal-style-justify': 'start'});
+        this.updateStyles({'--internal-style-justify-flex': 'flex-start'});
+      }
+    }
+
 	});
 
 })();
