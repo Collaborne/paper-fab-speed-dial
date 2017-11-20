@@ -14,6 +14,7 @@ Style                                                   | Description
 --paper-fab-speed-dial-keyboard-focus-background        | The background color of the Floating Action Button when focused
 --paper-fab-speed-dial-background-close                 | The background color of the Floating Action Button when opened
 --paper-fab-speed-dial-keyboard-focus-background-close  | The background color of the Floating Action Button when opened and focused
+--paper-fab-speed-dial-position                         | The type of positioning method used for the Floating Action Button (default: absolute)
 --paper-fab-speed-dial-right                            | Margin to the right of the screen (default: 16px)
 --paper-fab-speed-dial-bottom                           | Margin to the bottom of the screen (default: 16px)
 
@@ -34,7 +35,7 @@ Style                                                   | Description
 
 		<style>
 			.open,.overlay {
-				position: absolute;
+				position: var(--paper-fab-speed-dial-position, absolute);
 				bottom: var(--paper-fab-speed-dial-bottom, 16px);
 				right: var(--paper-fab-speed-dial-right, 16px);
 			}
